@@ -20,7 +20,7 @@ public class Window : MonoBehaviour
 
     IEnumerator WindowAI()
     {
-        while (enabled)
+        while (enabled && _player != null)
         {
             ShootProjectile();
             yield return new WaitForSeconds(_cooldown);

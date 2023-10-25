@@ -2,23 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIDogMove : MonoBehaviour
+public class Dog : MonoBehaviour
 {
     [SerializeField] private GameObject[] waypoints;
     private int currentWaypointIndex = 0;
     [SerializeField] private float _speed = 2f;
     private float _max_distance = 0.05f;
-    [SerializeField] private int _wait_time = 4;
+    [SerializeField] private float _wait_time = 3f;
+    private float _initial_wait_time;
 
     // Update is called once per frame
     void Start()
     {
+        _initial_wait_time = Random.Range(_wait_time, _wait_time * 2);
         StartCoroutine(DogAI());
+        
     }
 
     IEnumerator DogAI()
     {
-        yield return new WaitForSeconds(_wait_time);
+        yield return new WaitForSeconds(_initial_wait_time);
 
         while (enabled)
         {
