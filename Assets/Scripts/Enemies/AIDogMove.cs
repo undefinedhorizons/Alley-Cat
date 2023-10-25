@@ -13,11 +13,13 @@ public class AIDogMove : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
-        StartCoroutine(Wait());
+        StartCoroutine(DogAI());
     }
 
-    IEnumerator Wait()
+    IEnumerator DogAI()
     {
+        yield return new WaitForSeconds(_wait_time);
+
         while (enabled)
         {
             if (hasArrivedToWaypoint())
